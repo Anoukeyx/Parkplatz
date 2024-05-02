@@ -1,0 +1,26 @@
+body, header {
+    margin: 0;
+    padding: 0;
+}
+
+#basel {
+    width: 90px; 
+    height: auto; 
+    display: block; 
+    margin-top: 40px; /* Vielleicht auch besser mit Prozent */
+    margin-left: 3%;
+}
+
+.center-logo{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    height: 80vh; 
+    margin-top: 12%;
+}
+
+#logo {
+    width: 400px;
+    height: auto;
+    display: block;
+}
