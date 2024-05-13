@@ -58,6 +58,48 @@ body, header {
     display: block;
 }
 
+.buttons {
+    display: flex;
+    justify-content: center;}
+
+  button {
+        background-color: #49718A;
+        height: 50px;
+        min-width: 100px;   
+        border-radius: 10px;
+        color: #E8E0CC;
+        margin-right: 20px;
+        font-size: 15px;
+        border-width: 3px;
+        border-style: solid;
+      }
+
+#button_ph {
+    border-color: #E8E0CC;
+}
+
+#button_m {
+    border-color: #F2785C;
+}
+
+#button_w {
+    border-color: #FA8C99;  
+}
+
+#button_h {
+    border-color: #F2BA5C;  
+}
+
+    button:hover {
+            background-color: #82A1B5;
+    }   
+
+    button:active {
+            border-color: #8FC1E1;
+            color: #49718A;
+    }   
+    
+
 .footer {
     background-color: #E8E0CC; 
     color: #4A4A49; 
@@ -140,5 +182,6 @@ body, header {
         font-size: 12px;
     }
   }
+
 
 /*----------------------------------------------- RESPONSIVE ENDE -----------------------------------------------*/
