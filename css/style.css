@@ -29,7 +29,7 @@ body, header {
 .auto-gif img {
     width: 100%;
     position: absolute;
-    top: 390px; 
+    top: 385px; 
     z-index: 5; 
 }
 
@@ -96,8 +96,8 @@ body, header {
     }
 
     .auto-gif img {
-        width: 100%;
-        top: 310px; 
+        width: 150%;
+        top: 300px; 
     }
 
     .text-center {
@@ -122,8 +122,9 @@ body, header {
     }
 
     .auto-gif img {
-        width: 100%;
-        top: 210px; 
+        width: 180%;
+        top: 200px; 
+        object-fit: cover;
     }
 
     .text-center {
