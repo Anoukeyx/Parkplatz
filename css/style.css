@@ -22,14 +22,14 @@ body, header {
 }
 
 #logo {
-    width: 400px;
+    width: 380px;
     height: auto;
 }
 
 .auto-gif img {
     width: 100%;
     position: absolute;
-    top: 400px; 
+    top: 390px; 
     z-index: 5; 
 }
 
@@ -38,7 +38,7 @@ body, header {
     font-size: 20px;
     color: #4A4A49;
     font-family: 'Roboto', sans-serif;
-    max-width: 800px;
+    width: 60%;
     margin: 0px auto 20px;
 }
 
@@ -48,18 +48,19 @@ body, header {
     object-fit: contain;  
     display: block; 
     margin-bottom: -5px; 
+    margin-top: 50px;
 }
 
 .blue {
-    background-color: #4A728D; 
+    background-color: #49718A; 
     width: 100%; 
     height: 700px; 
     display: block;
 }
 
 .footer {
-    background-color: #4A4A49; 
-    color: white; 
+    background-color: #E8E0CC; 
+    color: #4A4A49; 
     text-align: center; 
     padding: 30px 0; 
     position: relative; 
@@ -72,3 +73,71 @@ body, header {
 .footer p {
     margin: 10px 0; 
 }
+
+/*----------------------------------------------- RESPONSIVE START -----------------------------------------------*/
+
+@media only screen and (max-width: 992px) {
+
+  }
+
+@media only screen and (max-width: 768px) {
+
+    #basel {
+        width: 80px; 
+        margin-top: 30px; 
+    }
+
+    .center-logo {
+        margin-top: 100px; 
+    }
+
+    #logo {
+        width: 320px;
+    }
+
+    .auto-gif img {
+        width: 100%;
+        top: 310px; 
+    }
+
+    .text-center {
+        font-size: 18px;
+        /*width: 70%;*/
+    }
+  }
+
+@media only screen and (max-width: 576px) {
+
+    #basel {
+        width: 60px; 
+        margin-top: 20px; 
+    }
+
+    .center-logo {
+        margin-top: 50px; 
+    }
+
+    #logo {
+        width: 230px;
+    }
+
+    .auto-gif img {
+        width: 100%;
+        top: 210px; 
+    }
+
+    .text-center {
+        font-size: 14px;
+        /*width: 80%;*/
+    }
+
+    .road img {
+        margin-top: 30px;
+    }
+
+    .footer {
+        font-size: 12px;
+    }
+  }
+
+/*----------------------------------------------- RESPONSIVE ENDE -----------------------------------------------*/
