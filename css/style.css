@@ -154,6 +154,10 @@ body, header {
         font-size: 13px;      
         margin-right: 10px; 
       }
+
+      .text-center {
+        width: 80%;
+    }
   }
 
 @media (max-width: 768px) {
@@ -181,7 +185,6 @@ body, header {
 
     .text-center {
         font-size: 18px;
-        /*width: 70%;*/
     }
   }
 
@@ -210,7 +213,6 @@ body, header {
 
     .text-center {
         font-size: 14px;
-        /*width: 80%;*/
     }
 
     .road img {
