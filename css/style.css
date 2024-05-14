@@ -1,3 +1,4 @@
+/*----------------------------------------------- HEADER START -----------------------------------------------*/
 body, header {
     margin: 0;
     padding: 0;
@@ -10,29 +11,36 @@ body, header {
     margin-top: 40px; /* Vielleicht auch besser mit Prozent */
     margin-left: 3%;
 }
-
+/*----------------------------------------------- HEADER ENDE -----------------------------------------------*/
+/*----------------------------------------------- LOGO START -----------------------------------------------*/
 .center-logo {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     z-index: 10; 
-    /*height: 30vh;*/
-    margin-top: 150px; /* vorher 10% */
+    margin-top: 150px; 
 }
 
 #logo {
     width: 380px;
     height: auto;
 }
+/*----------------------------------------------- LOGO ENDE -----------------------------------------------*/
+/*----------------------------------------------- AUTO START -----------------------------------------------*/
+.auto-gif {
+    width: 100%;
+    position: absolute;
+    top: 385px;
+    overflow: hidden; 
+    z-index: 5;
+}
 
 .auto-gif img {
     width: 100%;
-    position: absolute;
-    top: 385px; 
-    z-index: 5; 
 }
-
+/*----------------------------------------------- AUTO ENDE -----------------------------------------------*/
+/*----------------------------------------------- TEXT START -----------------------------------------------*/
 .text-center {
     text-align: center;
     font-size: 20px;
@@ -41,7 +49,7 @@ body, header {
     width: 60%;
     margin: 0px auto 20px;
 }
-
+/*----------------------------------------------- TEXT ENDE -----------------------------------------------*/
 .road img {
     width: 100%;   
     height: auto;       
@@ -50,7 +58,7 @@ body, header {
     margin-bottom: -5px; 
     margin-top: 50px;
 }
-
+/*----------------------------------------------- HAUPTINHALT START -----------------------------------------------*/
 .blue {
     background-color: #49718A; 
     width: 100%; 
@@ -99,7 +107,8 @@ body, header {
             color: #49718A;
     }   
     
-
+/*----------------------------------------------- HAUPTINHALT ENDE -----------------------------------------------*/
+/*----------------------------------------------- FOOTER START -----------------------------------------------*/
 .footer {
     background-color: #E8E0CC; 
     color: #4A4A49; 
@@ -115,14 +124,37 @@ body, header {
 .footer p {
     margin: 10px 0; 
 }
+/*----------------------------------------------- FOOTER ENDE -----------------------------------------------*/
+
+
+
 
 /*----------------------------------------------- RESPONSIVE START -----------------------------------------------*/
-
-@media only screen and (max-width: 992px) {
-
+@media (max-width: 1200px) {
+    .auto-gif img{
+        width: 105%;
+    }
+    .auto-gif{
+        top: 400px;
+    }
   }
 
-@media only screen and (max-width: 768px) {
+@media (max-width: 992px) {
+    .auto-gif img {
+        width: 120%;
+        top: 400px;
+    }
+
+    button { 
+        border-width: 2px;
+        height: 40px;        
+        min-width: 80px;     
+        font-size: 13px;      
+        margin-right: 10px; 
+      }
+  }
+
+@media (max-width: 768px) {
 
     #basel {
         width: 80px; 
@@ -137,9 +169,12 @@ body, header {
         width: 320px;
     }
 
-    .auto-gif img {
+    .auto-gif img{
         width: 150%;
-        top: 300px; 
+    }
+
+    .auto-gif {
+        top: 305px;
     }
 
     .text-center {
@@ -148,7 +183,7 @@ body, header {
     }
   }
 
-@media only screen and (max-width: 576px) {
+@media (max-width: 576px) {
 
     #basel {
         width: 60px; 
@@ -165,8 +200,10 @@ body, header {
 
     .auto-gif img {
         width: 180%;
-        top: 200px; 
-        object-fit: cover;
+    }
+
+    .auto-gif {
+        top: 180px;
     }
 
     .text-center {
@@ -178,10 +215,36 @@ body, header {
         margin-top: 30px;
     }
 
+    button { 
+        border-width: 2px;
+        height: 30px;         
+        min-width: 60px;      
+        font-size: 12px;      
+        margin-right: 5px;    
+      }
+
     .footer {
         font-size: 12px;
     }
-  }
 
+    @media (max-width: 540px){
+        .auto-gif {
+            top: 187px;
+        }
+    }
+
+    @media (max-width: 510px){
+        .auto-gif {
+            top: 190px;
+        }
+    }
+
+    @media (max-width: 400px){
+        .auto-gif {
+            top: 200px;
+        }
+    }
+
+  }
 
 /*----------------------------------------------- RESPONSIVE ENDE -----------------------------------------------*/
