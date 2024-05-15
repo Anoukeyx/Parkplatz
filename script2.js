@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             url += `&parkplatz=${encodeURIComponent(parkhaus)}`;
         }
 
+        
         try {
             const response = await fetch(url);
             const data = await response.json();
@@ -36,6 +37,16 @@ document.addEventListener('DOMContentLoaded', async () => {
                     usagePercentage.push(entry.auslastung_prozent);
                 });
             });
+
+    // Calculate canvas height based on screen width
+    let canvasHeight = 500; // Default height
+        if (window.innerWidth < 576) {
+        canvasHeight = 500; // Adjust for smaller screens
+        }
+
+    // Set canvas height
+    ctx.canvas.height = canvasHeight;
+            
 
             if (chart) {
                 chart.destroy();
@@ -56,6 +67,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 },
                 options: {
                     responsive: true,
+                    maintainAspectRatio: false, // Disable default aspect ratio
+
                     title: {
                         display: true,
                         text: 'Parking Data',

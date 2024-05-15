@@ -234,6 +234,13 @@ h1 {
         padding-left: 5%;
         padding-right: 5%;  
     }  
+    .parkingChart {
+        padding-left: 5%;
+        padding-right: 5%;
+        height: auto; /* Change height to auto */
+        max-height: 80vh; /* Set a maximum height relative to the viewport height */
+    }
+
   }
 
 @media (max-width: 576px) {
@@ -285,6 +292,7 @@ h1 {
     h1 {
         font-size: 15px;
     }
+    
  
  }
     
