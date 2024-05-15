@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parkplatz</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header>
@@ -35,6 +36,10 @@
             <button id="button_h"> 24H </button>
         </div>
 
+    <div class="parkingChart">
+        <canvas id="parkingChart"></canvas>
+    </div>  
+
     </div>
 
     <footer class="footer">
@@ -42,8 +47,8 @@
         <p>POWERED BY <a href="https://data.bs.ch/explore/dataset/100088/table/?disjunctive.title&sort=published" target="_blank">DATA.BS.CH</a> </p>
     </footer>
 
-    <canvas id="ParkingChart"></canvas>
-    <script src="script.js"></script>
+    <script src="script2.js"></script>
+
 
 </body>
 </html>
