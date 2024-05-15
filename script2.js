@@ -1,3 +1,6 @@
+
+
+
 document.addEventListener('DOMContentLoaded', async () => {
     const ctx = document.getElementById('parkingChart').getContext('2d');
     let chart;
@@ -38,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     labels: labels,
                     datasets: [
                         {
-                            label: 'Auslastung in Prozent',
+                            label: 'Auslastung des Parkhauses',
                             data: usagePercentage,
                             borderColor: 'rgba(255, 159, 64, 1)',
                             backgroundColor: 'rgba(255, 159, 64, 0.2)',
@@ -57,20 +60,37 @@ document.addEventListener('DOMContentLoaded', async () => {
                             display: true,
                             title: {
                                 display: true,
-                                text: 'Time'
+                                text: 'Time',
+                                color: 'rgba(232, 224, 294)' // Change the x-axis label color to blue
+                            },
+                            grid: {
+                                color: 'rgba(232, 224, 294, 0.2)' // Change the grid line color to white
+                            },
+                            ticks: {
+                                color: 'rgba(232, 224, 294)' // Change the x-axis tick color to blue
                             }
                         },
+                        
                         y: {
                             display: true,
                             title: {
                                 display: true,
-                                text: 'Usage Percentage'
+                                text: 'Usage Percentage',
+                                color: 'rgba(232, 224, 294)' // Change the y-axis label color to blue
                             },
-                            beginAtZero: true
-                        }
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(232, 224, 294, 0.2)' // Change the grid line color to white
+                            },
+                            ticks: {
+                                color: 'rgba(232, 224, 294)' // Change the y-axis tick color to blue
+                            }
+                        },
+                        
                     }
                 }
             });
+
 
         } catch (error) {
             console.error('Error fetching the data:', error);

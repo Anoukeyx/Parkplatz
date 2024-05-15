@@ -61,16 +61,20 @@ body, header {
 }
 
 .blue {
-    /*background-color: #49718A; */
+    background-color: #49718B;
     width: 100%; 
     height: 700px; 
     display: block;
 }
 /*----------------------------------------------- BLAUE STRASSE ENDE -----------------------------------------------*/
 /*----------------------------------------------- DATEN TEILEN START -----------------------------------------------*/
+
+
 .buttons {
     display: flex;
-    justify-content: center;}
+    justify-content: center;
+    padding-top: 50px;
+}
 
   button {
         background-color: #49718A;
