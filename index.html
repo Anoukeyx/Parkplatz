@@ -21,7 +21,7 @@
     </div>
 
     <div class="text-center">
-        <p>Entdecke die Belegungstrends der Parkhäuser in Basel – analysiere die Verfügbarkeit der letzten Tage, Wochen oder Monate und plane deinen Besuch entsprechend!</p>
+        <p>Entdecke die Belegungstrends der Parkhäuser in Basel – analysiere die Verfügbarkeit der letzten Tage, Woche oder Monat und plane deinen Besuch entsprechend!</p>
     </div>
 
     <div class="road">
@@ -29,22 +29,28 @@
     </div>
 
     <div class="blue">
+        <div class="buttons_oben">
+            <button id="button_ph">Bitte wählen Sie ein Parkhaus: </button>
+        </div>
         <div class="buttons">
-            <button id="button_ph"> Parkhaus wählen: </button>
-            <button id="button_m"> 1M </button>
-            <button id="button_w"> 1W </button>
-            <button id="button_h"> 24H </button>
+            <button id="button_m"> 1 Monat </button>
+            <button id="button_w"> 1 Woche </button>
+            <button id="button_h"> 24 Stunden </button>
         </div>
 
+    <div class="einfuhrung"> 
+        <h1 id="parkhausTitle"> </h1>
+    </div>
+
     <div class="parkingChart">
-        <canvas id="parkingChart"></canvas>
+        <canvas id="parkingChart" height="400"></canvas>
     </div>  
 
     </div>
 
     <footer class="footer">
-        <p>FHGR PROJECT BY NICOLE, TINA & ANOUK</p>
-        <p>POWERED BY <a href="https://data.bs.ch/explore/dataset/100088/table/?disjunctive.title&sort=published" target="_blank">DATA.BS.CH</a> </p>
+        <p> FHGR PROJEKT VON NICOLE, TINA & ANOUK</p>
+        <p> DATEN VON <a href="https://data.bs.ch/explore/dataset/100088/table/?disjunctive.title&sort=published" target="_blank">DATA.BS.CH</a> </p>
     </footer>
 
     <script src="script2.js"></script>

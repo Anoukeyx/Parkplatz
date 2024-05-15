@@ -49,6 +49,15 @@ body, header {
     width: 60%;
     margin: 0px auto 20px;
 }
+
+h1 {
+    font-size: 20px;
+    color: #E8E0CC;
+    font-family: 'Helvetica', sans-serif;
+    text-align: center;
+    margin-top: 50px;
+
+}
 /*----------------------------------------------- TEXT ENDE -----------------------------------------------*/
 /*----------------------------------------------- BLAUE STRASSE START -----------------------------------------------*/
 .road img {
@@ -72,7 +81,8 @@ body, header {
 .buttons {
     display: flex;
     justify-content: center;
-    padding-top: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
   button {
@@ -87,8 +97,15 @@ body, header {
         border-style: solid;
       }
 
+.buttons_oben {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+} 
+
 #button_ph {
-    border-color: #E8E0CC;
+    border: none;
 }
 
 #button_m {
@@ -120,10 +137,16 @@ body, header {
         color: #E8E0CC;
         margin-right: 20px;
         font-size: 15px;
-        border-width: 3px;
+        border-width: 2px;
         border-style: solid;
         border-color: #E8E0CC; 
         padding: 0 10px;
+    }
+
+    .parkingChart {
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-bottom: 10%;
     }
 
 /*----------------------------------------------- DATEN TEILEN ENDE -----------------------------------------------*/
@@ -175,6 +198,10 @@ body, header {
       .text-center {
         width: 80%;
     }
+    .parkingChart {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
   }
 
 @media (max-width: 768px) {
@@ -203,6 +230,10 @@ body, header {
     .text-center {
         font-size: 18px;
     }
+    .parkingChart {
+        padding-left: 5%;
+        padding-right: 5%;  
+    }  
   }
 
 @media (max-width: 576px) {
@@ -247,10 +278,27 @@ body, header {
     .footer {
         font-size: 12px;
     }
+    .parkingChart {
+        padding-left: 5%;
+        padding-right: 5%;  
+    }
+    h1 {
+        font-size: 15px;
+    }
+ 
+ }
+    
 
     @media (max-width: 540px){
         .auto-gif {
             top: 187px;
+        }
+        .parkingChart  {
+            padding-left: 5%;
+            padding-right: 5%;  
+        }
+        h1 {
+            font-size: 15px;
         }
     }
 
@@ -258,14 +306,27 @@ body, header {
         .auto-gif {
             top: 190px;
         }
+        .parkingChart {
+            padding-left: 5%;
+            padding-right: 5%;  
+        }
+        h1 {
+            font-size: 15px;
+        }
     }
 
     @media (max-width: 400px){
         .auto-gif {
             top: 200px;
         }
+        .parkingChart {
+            padding-left: 5%;
+            padding-right: 5%;  
+        }
+        h1 {
+            font-size: 15px;
+        }
     }
 
-  }
-
+  
 /*----------------------------------------------- RESPONSIVE ENDE -----------------------------------------------*/

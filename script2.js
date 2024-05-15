@@ -8,8 +8,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     parkhausDropdown.id = 'parkhausDropdown';
     document.getElementById('button_ph').after(parkhausDropdown);
 
-    // Funktion zum Abrufen und Aktualisieren der Daten
-    const fetchDataAndUpdateChart = async (startDate, endDate, parkhaus = null, displayTime = true) => {
+    // Function to update the <h1> element text
+    const updateTitle = (parkhausName) => {
+        const titleElement = document.getElementById('parkhausTitle');
+        titleElement.textContent = `Auslastung vom ${parkhausName}`;
+    };
+
+    // Function to fetch data and update the chart
+    const fetchDataAndUpdateChart = async (startDate, endDate, parkhaus = null, displayTime = true, lineColor = 'rgba(255, 159, 64, 1)') => {
         let url = `https://781199-5.web.fhgr.ch/endpoint2.php?start_date=${startDate}&end_date=${endDate}`;
         if (parkhaus) {
             url += `&parkplatz=${encodeURIComponent(parkhaus)}`;
@@ -25,7 +31,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             data.forEach(item => {
                 item.data.forEach(entry => {
                     const date = new Date(entry.created);
-                    const formattedDate = displayTime ? date.toLocaleString() : date.toLocaleDateString(); // Formatieren als lokales Datum und Zeit oder nur Datum
+                    const formattedDate = displayTime ? date.toLocaleString() : date.toLocaleDateString(); // Format as local date and time or only date
                     labels.push(formattedDate);
                     usagePercentage.push(entry.auslastung_prozent);
                 });
@@ -41,9 +47,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                     labels: labels,
                     datasets: [
                         {
-                            label: 'Auslastung des Parkhauses',
                             data: usagePercentage,
-                            borderColor: 'rgba(255, 159, 64, 1)',
+                            borderColor: lineColor,
                             backgroundColor: 'rgba(255, 159, 64, 0.2)',
                             fill: false,
                         }
@@ -53,14 +58,14 @@ document.addEventListener('DOMContentLoaded', async () => {
                     responsive: true,
                     title: {
                         display: true,
-                        text: 'Parking Data'
+                        text: 'Parking Data',
                     },
                     scales: {
                         x: {
                             display: true,
                             title: {
                                 display: true,
-                                text: 'Time',
+                                text: 'Zeitpunkt',
                                 color: 'rgba(232, 224, 294)' // Change the x-axis label color to blue
                             },
                             grid: {
@@ -75,7 +80,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                             display: true,
                             title: {
                                 display: true,
-                                text: 'Usage Percentage',
+                                text: 'Auslastung in Prozent',
                                 color: 'rgba(232, 224, 294)' // Change the y-axis label color to blue
                             },
                             beginAtZero: true,
@@ -87,17 +92,29 @@ document.addEventListener('DOMContentLoaded', async () => {
                             }
                         },
                         
-                    }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false,
+                            labels: {
+                                color: 'rgba(232, 224, 294)' // Change the legend label color to blue
+                            }
+                        }
+                    },
                 }
             });
 
+            // Update the title with the selected parking lot name
+            if (parkhaus) {
+                updateTitle(parkhaus);
+            }
 
         } catch (error) {
             console.error('Error fetching the data:', error);
         }
     };
 
-    // Funktion zum Abrufen und Anzeigen der Parkhausnamen im Dropdown
+    // Function to fetch and populate the dropdown with parking lot names
     const fetchAndPopulateDropdown = async () => {
         const url = `https://781199-5.web.fhgr.ch/endpoint2.php?start_date=2024-01-01&end_date=2024-12-31`; // Example dates to get all data
 
@@ -113,6 +130,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             parkhausDropdown.innerHTML = '';
 
+            const emptyOption = document.createElement('option');
+            emptyOption.value = '';
+            emptyOption.textContent = ' ';
+            parkhausDropdown.appendChild(emptyOption);
+
             parkhausNamen.forEach(parkhaus => {
                 const option = document.createElement('option');
                 option.value = parkhaus;
@@ -124,7 +146,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     };
 
-    // Event Listener für den Button "1M"
+    // Event listener for the dropdown to fetch data for the selected parking lot
+    parkhausDropdown.addEventListener('change', () => {
+        const selectedParkhaus = parkhausDropdown.value;
+        if (selectedParkhaus !== '') { // Only fetch data if a parking lot is selected
+            const today = new Date();
+            const endDate = today.toISOString().split('T')[0];
+            const startDate = new Date(today);
+            startDate.setDate(today.getDate() - 7); // Default to last 7 days
+            const formattedStartDate = startDate.toISOString().split('T')[0];
+            fetchDataAndUpdateChart(formattedStartDate, endDate, selectedParkhaus);
+        }
+    });
+
+    // Event listener for the "1M" button
     document.getElementById('button_m').addEventListener('click', () => {
         const today = new Date();
         const currentYear = today.getFullYear();
@@ -136,50 +171,33 @@ document.addEventListener('DOMContentLoaded', async () => {
         const formattedEndOfMonth = endOfMonth.toISOString().split('T')[0];
         const selectedParkhaus = parkhausDropdown.value;
 
-        fetchDataAndUpdateChart(formattedStartOfMonth, formattedEndOfMonth, selectedParkhaus, false); // Keine Zeit anzeigen
+        fetchDataAndUpdateChart(formattedStartOfMonth, formattedEndOfMonth, selectedParkhaus, false, 'rgba(242, 120, 92)'); // Set line color to rgba(242, 120, 92)
     });
 
-    // Event Listener für den Button "1W"
+    // Event listener for the "1W" button
     document.getElementById('button_w').addEventListener('click', () => {
         const today = new Date();
         const endDate = today.toISOString().split('T')[0];
         const startDate = new Date(today);
-        startDate.setDate(today.getDate() - 7); // Aktuelle Woche
+        startDate.setDate(today.getDate() - 7); // Current week
         const formattedStartDate = startDate.toISOString().split('T')[0];
         const selectedParkhaus = parkhausDropdown.value;
 
-        fetchDataAndUpdateChart(formattedStartDate, endDate, selectedParkhaus, false); // Keine Zeit anzeigen
+        fetchDataAndUpdateChart(formattedStartDate, endDate, selectedParkhaus, false, 'rgba(250, 140, 153)'); 
     });
 
-    // Event Listener für den Button "24H"
+    // Event listener for the "24H" button
     document.getElementById('button_h').addEventListener('click', () => {
-        const endDate = new Date().toISOString(); // Aktuelles Datum und Zeit
+        const endDate = new Date().toISOString(); // Current date and time
         const startDate = new Date();
-        startDate.setDate(startDate.getDate() - 1); // Datum vor 24 Stunden
+        startDate.setDate(startDate.getDate() - 1); // Date 24 hours ago
         const formattedStartDate = startDate.toISOString();
         const selectedParkhaus = parkhausDropdown.value;
 
-        fetchDataAndUpdateChart(formattedStartDate, endDate, selectedParkhaus); // Zeit anzeigen
-    });
-
-    // Event Listener für den Dropdown zum Abrufen der Daten des ausgewählten Parkhauses
-    parkhausDropdown.addEventListener('change', () => {
-        const today = new Date();
-        const endDate = today.toISOString().split('T')[0];
-        const startDate = new Date(today);
-        startDate.setDate(today.getDate() - 7); // Default to last 7 days
-        const formattedStartDate = startDate.toISOString().split('T')[0];
-        const selectedParkhaus = parkhausDropdown.value;
-
-        fetchDataAndUpdateChart(formattedStartDate, endDate, selectedParkhaus);
+        fetchDataAndUpdateChart(formattedStartDate, endDate, selectedParkhaus), 'rgba(242, 186, 92)'; // Show time
     });
 
     // Initial Load
     await fetchAndPopulateDropdown();
-    const today = new Date();
-    const endDate = today.toISOString().split('T')[0];
-    const startDate = new Date(today);
-    startDate.setDate(today.getDate() - 7); // Default to last 7 days
-    const formattedStartDate = startDate.toISOString().split('T')[0];
-    fetchDataAndUpdateChart(formattedStartDate, endDate, parkhausDropdown.value);
 });
+
