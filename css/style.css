@@ -109,6 +109,20 @@ body, header {
             color: #49718A;
     }   
     
+    #parkhausDropdown {
+        background-color: #49718A;
+        height: 40px;
+        min-width: 150px;
+        border-radius: 10px;
+        color: #E8E0CC;
+        margin-right: 20px;
+        font-size: 15px;
+        border-width: 3px;
+        border-style: solid;
+        border-color: #E8E0CC; 
+        padding: 0 10px;
+    }
+
 /*----------------------------------------------- DATEN TEILEN ENDE -----------------------------------------------*/
 /*----------------------------------------------- FOOTER START -----------------------------------------------*/
 .footer {

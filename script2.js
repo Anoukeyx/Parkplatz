@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('button_ph').after(parkhausDropdown);
 
     // Funktion zum Abrufen und Aktualisieren der Daten
-    const fetchDataAndUpdateChart = async (startDate, endDate, parkhaus = null) => {
+    const fetchDataAndUpdateChart = async (startDate, endDate, parkhaus = null, displayTime = true) => {
         let url = `https://781199-5.web.fhgr.ch/endpoint2.php?start_date=${startDate}&end_date=${endDate}`;
         if (parkhaus) {
             url += `&parkplatz=${encodeURIComponent(parkhaus)}`;
@@ -21,7 +21,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             data.forEach(item => {
                 item.data.forEach(entry => {
-                    labels.push(entry.created);
+                    const date = new Date(entry.created);
+                    const formattedDate = displayTime ? date.toLocaleString() : date.toLocaleDateString(); // Formatieren als lokales Datum und Zeit oder nur Datum
+                    labels.push(formattedDate);
                     usagePercentage.push(entry.auslastung_prozent);
                 });
             });
@@ -114,7 +116,30 @@ document.addEventListener('DOMContentLoaded', async () => {
         const formattedEndOfMonth = endOfMonth.toISOString().split('T')[0];
         const selectedParkhaus = parkhausDropdown.value;
 
-        fetchDataAndUpdateChart(formattedStartOfMonth, formattedEndOfMonth, selectedParkhaus);
+        fetchDataAndUpdateChart(formattedStartOfMonth, formattedEndOfMonth, selectedParkhaus, false); // Keine Zeit anzeigen
+    });
+
+    // Event Listener für den Button "1W"
+    document.getElementById('button_w').addEventListener('click', () => {
+        const today = new Date();
+        const endDate = today.toISOString().split('T')[0];
+        const startDate = new Date(today);
+        startDate.setDate(today.getDate() - 7); // Aktuelle Woche
+        const formattedStartDate = startDate.toISOString().split('T')[0];
+        const selectedParkhaus = parkhausDropdown.value;
+
+        fetchDataAndUpdateChart(formattedStartDate, endDate, selectedParkhaus, false); // Keine Zeit anzeigen
+    });
+
+    // Event Listener für den Button "24H"
+    document.getElementById('button_h').addEventListener('click', () => {
+        const endDate = new Date().toISOString(); // Aktuelles Datum und Zeit
+        const startDate = new Date();
+        startDate.setDate(startDate.getDate() - 1); // Datum vor 24 Stunden
+        const formattedStartDate = startDate.toISOString();
+        const selectedParkhaus = parkhausDropdown.value;
+
+        fetchDataAndUpdateChart(formattedStartDate, endDate, selectedParkhaus); // Zeit anzeigen
     });
 
     // Event Listener für den Dropdown zum Abrufen der Daten des ausgewählten Parkhauses
@@ -138,4 +163,3 @@ document.addEventListener('DOMContentLoaded', async () => {
     const formattedStartDate = startDate.toISOString().split('T')[0];
     fetchDataAndUpdateChart(formattedStartDate, endDate, parkhausDropdown.value);
 });
-

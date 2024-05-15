@@ -1,7 +1,3 @@
-// document.addEventListener('DOMContentLoaded', () => {
-//     const apiUrl = 'https://781199-5.web.fhgr.ch/endpoint.php';
-//     const apiUrl2 = 'https://781199-5.web.fhgr.ch/endpoint2.php?start_date=2024-05-13&end_date=2024-05-14'
-
 document.addEventListener('DOMContentLoaded', async () => {
     const ctx = document.getElementById('parkingChart').getContext('2d');
 
@@ -10,8 +6,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         const data = await response.json();
 
         const labels = data.map(item => item.title);
-        const freeSpaces = data.map(item => item.free_spaces);
-        const totalSpaces = data.map(item => item.total_spaces);
         const usagePercentage = data.map(item => item.auslastung_prozent);
 
         const chart = new Chart(ctx, {
@@ -22,9 +16,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                     {
                         label: 'Auslastung in Prozent',
                         data: usagePercentage,
-                        borderColor: 'rgba(255, 159, 64, 1)',
                         backgroundColor: 'rgba(255, 159, 64, 0.2)',
-                        fill: false,
+                        borderColor: 'rgba(255, 159, 64, 1)',
+                        borderWidth: 1
                     }
                 ]
             },
@@ -35,29 +29,37 @@ document.addEventListener('DOMContentLoaded', async () => {
                     text: 'Parking Data'
                 },
                 scales: {
-                    xAxes: [{
+                    x: {
+                        type: 'category',
                         display: true,
-                        scaleLabel: {
+                        title: {
                             display: true,
-                            labelString: 'Parking Lots'
+                            text: 'Parking Lots'
                         }
-                    }],
-                    yAxes: [{
+                    },
+                    y: {
                         display: true,
-                        scaleLabel: {
+                        title: {
                             display: true,
-                            labelString: 'Spaces'
+                            text: 'Usage Percentage'
                         },
                         ticks: {
                             beginAtZero: true
                         }
-                    }]
+                    }
                 }
             }
+        });
+
+         // Event Listener für den Button "Parkhaus wählen"
+         document.getElementById('button_ph').addEventListener('click', async () => {
+            // Skript script2.js dynamisch laden und ausführen
+            const script = document.createElement('script');
+            script.src = 'script2.js';
+            document.body.appendChild(script);
         });
 
     } catch (error) {
         console.error('Error fetching the data:', error);
     }
 });
-
