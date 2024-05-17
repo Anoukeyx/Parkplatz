@@ -199,6 +199,11 @@ h1 {
       .text-center {
         width: 80%;
     }
+
+
+    .road img {
+        margin-bottom: -1px; 
+    }
     .parkingChart {
         padding-left: 5%;
         padding-right: 5%;
