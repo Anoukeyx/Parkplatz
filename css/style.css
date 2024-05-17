@@ -65,7 +65,7 @@ h1 {
     height: auto;       
     object-fit: contain;  
     display: block; 
-    margin-bottom: -5px; 
+    margin-bottom: -1px; 
     margin-top: 50px;
 }
 
@@ -198,11 +198,6 @@ h1 {
 
       .text-center {
         width: 80%;
-    }
-
-
-    .road img {
-        margin-bottom: -1px; 
     }
     .parkingChart {
         padding-left: 5%;
